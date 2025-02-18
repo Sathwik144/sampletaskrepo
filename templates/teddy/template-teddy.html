@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+    <style type="text/css">
+        @supports
+            -ko-blockdefs {
+
+            text {
+                widget: text
+            }
+
+            listsize {
+                widget: select;
+                options: 1 | 2 | 3;
+            }
+
+            color {
+                widget: color;
+            }
+            
+    		width { label: Width; widget: integer; min: 500; max: 900; }
+    	face { label: Font; widget: text; category: style; }
+    	serifFace { label: Font Serif; extend: face; category: style; }
+    	sansFace { label: Font Sans; extend: face; category: style; }
+    	gutterWidth { label: Gutter; widget: integer; max: 40; min: 10; }
+    	template { label: Template; properties: bodyWidth=660 gutterWidth=20 }
+    	insertWidth { label: Inset Width; widget: integer; max: 600; min: 100; }
+    	heroBlock { properties: insertWidth=340; }
+
+      url { label: Link; widget: url }
+      src { label: Image; widget: src }
+      alt {
+        label: Alternative Text;
+        widget: text;
+        help: Alternative text will be shown on email clients that does not download image automatically;
+      }
+
+      text { label: Paragraph; widget: text }
+      title { label: Title; widget: text }
+      subTitle { label: Subtitle; }
+
+      link {
+      	label: Link;
+      	properties: url text;
+      }
+
+      image { label: Image; properties: src url alt }
+
+      bodyTheme { label: Body; }
+      headerBlock { label: Header; }
+      heroBlock { label: Hero; }
+      threetwoBlock { label: 3x2 Articles; }
+      twoColumnBlock { label: 2 Columns; }
+      socialBlock { labsl: Social; }
+      footerBlock { label: Footer; }
+
+      /* buttons */
+      buttonStyle color { label: Text Color; extend: color; transparent: true; }
+      buttonStyle size { label: Text Size; extend: size }
+      buttonStyle borderWidth { label: Border Width; widget: integer; min: 0; max: 10; }
+      buttonStyle borderColor { label: Border Color; }
+      buttonStyle verticalPadding { label: Vertical Padding; widget: integer; min: 0; max: 40; }
+      buttonStyle horizontalPadding { label: Horizontal Padding; widget: integer; min: 0; max: 40; }
+      buttonStyle { label: Button; properties: face color size align buttonColor radius borderWidth borderColor verticalPadding horizontalPadding }
+      buttonStyle:preview { -ko-bind-text: @['Button']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; -ko-background-color: @buttonColor; padding-left: 5px; -ko-border-radius: @[radius]px; }
+
+      blockSpacing verticalSpacing { label: Vertical Spacing; widget: integer; min: 0; max: 40 }
+      blockSpacing horizontalSpacing { label: Horizontal Spacing; widget: integer; min: 0; max: 40 }
+      blockSpacing topPadding { label: Top Padding; widget: integer; min: 0; max: 40 }
+      blockSpacing bottomPadding { label: Bottom Padding; widget: integer; min: 0; max: 40 }
+      blockSpacing { label: Block Spacing; properties: topPadding bottomPadding verticalSpacing horizontalSpacing; category: style /* make sure this ends up as a style property, with inheritance/theming */ }
+     
+      
+    }
+    </style>
+
+      <!-- /* @media screen and (max-width: 600px) {
+      table.vb-row {
+        width: 95% !important;
+      }
+
+      .mobile-hide { display: none !important; }
+      .mobile-textcenter { text-align: center !important; }
+
+      .mobile-full { 
+        width: 100% !important;
+        max-width: none !important;
+      }
+    } */ -->
+   
+    
+     
+      
+    
+    
+</head>
+
+<body>
+    
+  
+  <center data-ko-container="main">
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background-color:#202020;" data-ko-block="headerBlock">
+        <!-- // 1-COLUMN SCAFFOLD -->
+        <tr>
+            <td align="center" height="100%" valign="top" width="100%" style="background-color:#ffffff; background:linear-gradient(to bottom, #ffffff, #ffffff);">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:80px;">
+                    <tr>
+                        <td align="center" valign="top" style="padding:20px 10px 10px; -ko-padding:@[_root_.gutterWidth]px @[Math.floor(_root_.gutterWidth / 2)]px @[Math.floor(_root_.gutterWidth / 2)]px">
+                            <a data-ko-link="image.url" href="http://www.nps.gov/" target="_blank"><img data-ko-editable="image.src" src="https://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/886bc879-0938-4e05-bd13-552b3bba5545.png?_ga=1.163168254.333388288.1383678580" alt="" height="80" width="200" style="-ko-attr-alt: @[image.alt]; border:0; color:#404040; font:bold 24px/100% Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif; -ko-font:bold 24px/100% @_root_.sansFace; margin:0; padding:0;"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+       <div data-ko-block="HeaderAndText">
+        <h1 data-ko-editable="headerText" align="center" style="font-family: Arial, Helvetica, sans-serif; font-weight: 520;line-height: 1.3cm;font-size: 35px;letter-spacing: 0cm;">  Your Order Has Been<br>
+          Successfully Placed 
+
+           </h1>   
+       </div>
+       <div data-ko-block="HeaderAndText1">
+           <div data-ko-editable="bodyText" align="center" style="font-size: 18px; font-family: Arial, Helvetica, sans-serif;">
+                Order ID: 12345623
+           </div>
+       </div>
+    
+       
+        <!-- buttonBlock -->
+        <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf"  style="background-color: #ffffff" data-ko-block="buttonBlock">
+            <tbody><tr><td class="vb-outer" align="center" valign="top" style="padding-left: 9px; padding-right: 9px; font-size: 0">
+            <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]--><!--
+            --><div style="margin: 0 auto; max-width: 570px; -mru-width: 0px"><table role="presentation" class="vb-row" border="0" cellpadding="0" cellspacing="9" bgcolor="#ffffff" width="570" style="border-collapse: collapse; width: 100%; background-color: #ffffff; max-width: 570px; -mru-width: 0px">
+              
+              <tbody><tr>
+            <td align="center" valign="top" style="font-size: 0; padding: 0 9px; padding-top: 13px; padding-bottom: 13px"><div style="vertical-align: top; width: 100%; max-width: 552px; -mru-width: 0px"><!--
+              --><table role="presentation" border="0" cellspacing="9" cellpadding="0" style="border-collapse: collapse; width: 100%" width="552">
+                
+                <tbody>
+                  <tr>
+                   <td valign="top" align="center" style="padding: 9px; padding-top: 5px; padding-bottom: 5px; padding: 9px; padding-top: 5px; padding-bottom: 5px">
+                    <table role="presentation" cellpadding="0" border="0" align="center" cellspacing="0" style="border-spacing: 0; mso-padding-alt: 12px 14px 12px 14px"><tbody><tr>
+                     <td width="auto" valign="middle" align="center"  style="text-align: center; font-weight: normal; padding: 12px; padding-left: 14px; padding-right: 14px; background-color: #7c060c; color: #ffffff;font-size: 18px; font-family: Arial, Helvetica, sans-serif; border-radius: 40px ">
+                      <a data-ko-editable="buttonText" 
+                      data-ko-link="buttonLink.url"
+                       style="text-decoration: none; font-weight: normal;border-top:10px solid #7c060c;border-right:10px solid #7c060c; border-bottom:10px solid #7c060c;border-left:10px solid #7c060c;  color: #ffffff; font-size: 15px; font-family: Arial, Helvetica, sans-serifdata-ko-font-size: @[buttonStyle.size]px; 
+                       data-ko-color: @buttonStyle.color; 
+                       data-ko-font-family: @buttonStyle.face; 
+                       data-ko-attr-href: @buttonLink.url"
+                        target="_new" href="https://www.example.com/track-order" > <span data-ko-wrap="false" style="color: #FFFFFF;">Track Your Order</span></a></td>
+                     </tr></tbody></table></td>
+                  </tr>
+              
+              </tbody></table></div></td>
+          </tr>
+            
+            </tbody></table></div> 
+          </td></tr>
+          </tbody></table>
+          <!-- buttonBlock -->
+
+          <div data-ko-block="HeaderAndText2">
+            <div data-ko-editable="bodyText" align="center" style="font-size: 16px; font-family: Arial, Helvetica, sans-serif;padding: 0;margin: 0;color:#000000">
+                  Please allow 24 hours to track your order.
+           </div>
+        </div>
+
+
+         <!--doubleArticleBlock-->
+   <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf" id="ko_doubleArticleBlock_1" style="background-color: #ffffff" data-ko-block="doubleArticleBlock">
+    <tbody>
+      <tr>
+        <td class="vb-outer" align="center" valign="top" style="padding-left: 9px; padding-right: 9px; font-size: 0">
+          <div style="margin: 0 auto; max-width: 650px;">
+            <table role="presentation" class="vb-row" border="0" cellpadding="0" cellspacing="9" bgcolor="#ffffff" width="650" style="border-collapse: collapse; width: 100%; background-color: #ffffff; max-width: 650px; box-sizing: border-box; ">
+              <tbody>
+                <tr>
+                  <td align="center" valign="top" style="font-size: 0; padding: 0 9px;padding-top: 30px;">
+                    <div style="width: 100%; max-width: 650px;display: flex;background-color: #7c060c;border-radius: 20px;">
+                      <div class="mobile-full" style="display: inline-block; vertical-align: top; width: 100%; max-width: 300px; padding-top: 13px; padding-bottom: 0px; min-width: calc(50%); max-width: calc(100%);">
+                        <table role="presentation" border="0" cellspacing="9" cellpadding="0" style="border-collapse: collapse; width: 100%;" width="300px" align="left">
+                          <tbody>
+                            <tr>
+                              <td  data-ko-editable="leftTitleText" width="100%" valign="top" align="left" style="font-weight: normal; color: #f09916; font-size: 16px; font-family: Arial, Helvetica, sans-serif; padding: 13px; padding-top: 0px; padding-bottom: 0px; text-align: left">
+                                <span style="font-weight: normal;font-size: 16px; font-family: Arial, Helvetica, sans-serif;">Summary</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td data-ko-editable="leftLongText" class="long-text links-color" width="100%" valign="top" align="left" style="font-weight: normal; color: #ffffff; font-size: 14px; font-family: Arial, Helvetica, sans-serif; padding: 13px; padding-top: 0px; padding-bottom: 0px; text-align: left; line-height: 30px">
+                                <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px; font-family: Arial, Helvetica, sans-serif;font-size: 14px;">Ready to Ship</p>
+                                <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;font-size: 14px;"># 7348.June 30, 2024</p>
+                                <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;font-size: 14px;">Rs.415.08</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="mobile-full" style="display: inline-block; vertical-align: top; width: 100%; max-width: 350px; padding-top: 13px; padding-bottom: 13px; min-width: calc(50%); max-width: calc(100%);">
+                        <table role="presentation" border="0" cellspacing="9" cellpadding="0" style="border-collapse: collapse; width: 100%;" width="350px" align="left">
+                          <tbody>
+                            <tr>
+                              <td data-ko-editable="rightTitleText" width="100%" valign="top" align="left" style="font-weight: normal; color: #f09916; font-size: 16px; font-family: Arial, Helvetica, sans-serif; padding: 9px; padding-top: 0px; padding-bottom: 0px; text-align: left">
+                                <span style="font-weight: normal">Shipping Address</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td data-ko-editable="rightLongText" class="long-text links-color" width="100%" valign="top" align="left" style="font-weight: normal; color: #ffffff; font-family: Arial, Helvetica, sans-serif; padding: 9px; padding-top: 0px; padding-bottom: 5px; text-align: left; line-height: 25px">
+                                <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;font-size: 14px;">Stenano William</p>
+                                <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;font-size: 13px;">Sweet Snack HQ, 123 Bique Street Unit 10</p>
+                                <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;font-size: 14px;">Boston, MA 02110</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+ <!--doubleArticleBlock-->
+       
+
+ <div data-ko-block="HeaderAndText3">
+    <div data-ko-editable="bodyText" align="center" style="font-size: 30px; font-family: Arial, Helvetica, sans-serif;padding-top: 20px;color:#000000">
+        Your item in this order
+  </div>
+ </div>
+
+
+ <div align="left" data-ko-block="fixedlist1" style="background-color: #ffffff; padding-left: 150px; width: 95%; box-sizing: border-box; -ko-background-color: @color;">
+    <ul style="list-style: none;padding: 0; margin: 0;align-items: center;">
+      <li style="display: flex; align-items: center; gap: 20px;    ">
+        <!-- Image -->
+        <div style="padding: 10px;">
+          <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background-color: #202020;">
+            <tr>
+              <td border="0" align="left" height="100%" valign="top" width="100%" style="background-color: transparent; background: linear-gradient(to bottom, #ffffff, #FFFFFF);">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 80px;">
+                  <tr>
+                    <td align="center" valign="top" style="padding:20px 10px 10px;background-color:#7c060c; border-radius: 5px; -ko-padding:@[_root_.gutterWidth]px @[Math.floor(_root_.gutterWidth / 2)]px @[Math.floor(_root_.gutterWidth / 2)]px">
+                        <a   href=" " target="_blank"><img   src="data:image/jpeg;base64,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" alt="" height="85" width="80" style="    -ko-attr-alt: @[image.alt]; border:0; color:#404040; font:bold 24px/100% Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif; -ko-font:bold 24px/100% @_root_.sansFace; margin:0; padding:0;"></a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- Text -->
+       
+        <div>
+            <div data-ko-editable="headerText" style="margin: 0; font-size: 15px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;line-height: 10px; padding-top: 15px;">Pulsitos</div>
+            <div data-ko-editable="firstBodyText" style="margin: 0; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">Order number: #7348</div>
+            <div data-ko-editable="secondBodyText" style="margin: 0; font-size: 15px; font-family: Arial, Helvetica, sans-serif; color: rgb(8, 143, 8);font-weight: bold;">Rs.150.03</div>
+            <div data-ko-editable="thirdBodyText" style="margin: 0; font-size: 11px; font-family: Arial, Helvetica, sans-serif;">Estimated delivery date: Oct 10, 2024</div>
+          </div>
+          
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- Price Section -->
+  <div data-ko-block="fixedlist2" style="background-color: #ffffff; padding: 0 ; width: 100%; box-sizing: border-box; -ko-background-color: @color;display: flex; justify-content: center; align-items: center; ">
+    <div  class="left-div" style="margin-bottom: 5px; text-align: center; width: 50%; box-sizing: border-box; padding: 0;" data-ko-editable="firstBodyText">
+      <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;color: #000000;">price</p>
+ </div>
+ <div class="right-div" style="margin-bottom: 5px; text-align: center; width: 50%; box-sizing: border-box; padding: 0;" data-ko-editable="secondBodyText">
+  <p style="margin: 1em 0px; margin-bottom: 0px; margin-top: 0px;color:#000000">RS.500.10</p>
+</div> 
+  </div> 
+
+    
+
+
+    
+    
+    <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf" id="ko_hrBlock2_1" style="background-color: #ffffff" data-ko-block="hrBlock">
+        <tbody>
+          <tr>
+            <td class="vb-outer" align="center" valign="top" style="padding: 0">
+              <!--[if (gte mso 9)|(lte ie 8)]>
+              <table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr><td align="center" valign="top"><![endif]-->
+              <div style="margin: 0 auto; max-width: 100%; width: 100%">
+                <table role="presentation" class="vb-row" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" width="100%" style="border-collapse: collapse; background-color: #ffffff;">
+                  <tbody>
+                    <tr>
+                      <td align="center" valign="top" style="padding: 0; font-size: 0;">
+                        <div style="vertical-align: top; width: 100%;">
+                          <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; width: 100%;" width="100%">
+                            <tbody>
+                              <tr>
+                                <td valign="top" align="center" style="padding: 0;">
+                                  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-spacing: 0; width: 100%;">
+                                    <tbody>
+                                      <tr>
+                                        <td width="100%" height="1" style="padding: 0; font-size: 1px; line-height: 1px; max-height: 1px; background-color: #3f3f3f; line-height: 1px; max-height: 1px; overflow: hidden;">&nbsp;</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+         </tbody>
+         </table>
+          
+      <div data-ko-block="HeaderAndText4">
+        <div data-ko-editable="bodyText" align="center" style="font-size: 30px; font-family: Arial, Helvetica, sans-serif;padding-top: 20px;color:#000000">
+          Any problems with your order?
+      </div>
+     </div>
+      
+
+
+      
+     <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf"  style="background-color: #ffffff" data-ko-block="doubleArticleBlock1">
+      <tbody><tr><td class="vb-outer" align="center" valign="top" style="padding-left: 9px; padding-right: 9px; font-size: 0">
+         <div style="margin: 0 auto; max-width: 570px; -mru-width: 0px"><table role="presentation" class="vb-row" border="0" cellpadding="0" cellspacing="9" bgcolor="#ffffff" width="570" style="border-collapse: collapse; width: 100%; background-color: #ffffff; max-width: 570px; -mru-width: 0px">
+          <tbody><tr>
+        <td align="right" valign="top" style="font-size: 0; padding: 0 9px">
+          <div style="width: 100%; max-width: 552px;display: flex; justify-content: space-between;gap: 10px; -mru-width: 0px"><!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="right" border="0" cellspacing="0" cellpadding="0" width="552" style="mso-padding-top-alt: 13px; mso-padding-bottom-alt: 13px"><tr><![endif]--><!--
+             </div> <div class="mobile-full" style="display: inline-block; vertical-align: top; width: 100%; max-width: 276px; -mru-width: 0px; padding-top: 13px; padding-bottom: 13px; min-width: calc(50%); max-width: calc(100%); width: calc(304704px - 55200%)"><!--
+          --><table role="presentation" border="0" cellspacing="9" cellpadding="0" style="border-collapse: collapse; width: 100%; -yandex-p: calc(2px - 3%)" width="276" align="left">
+               <tbody><tr>     
+                
+        <td valign="top" align="left" style="padding: 9px; padding-top: 5px; padding-bottom: 5px; padding: 9px; padding-top: 5px; padding-bottom: 5px"><table role="presentation" cellpadding="6" border="0" align="left" cellspacing="0" style="border-spacing: 0; mso-padding-alt: 6px 18px 6px 18px; margin-top: 2px"><tbody><tr>
+          <td width="auto" valign="middle" align="left" bgcolor="#A52A2A" style="text-align: center; font-weight: normal; padding: 6px; padding-left: 18px; padding-right: 18px; background-color: #A52A2A; color: #ffffff; font-size: 13px; font-family: Arial, Helvetica, sans-serif; border-radius: 10px">
+            <a style="text-decoration: none; font-weight: normal;white-space: nowrap; color: #ffffff; font-size: 13px;display: inline-flex;align-items: center; justify-content: center; font-family: Arial, Helvetica, sans-serif" target="_new" href="tel:+911234567890"  >
+          <img src="https://e7.pngegg.com/pngimages/344/761/png-clipart-computer-icons-call-icon-cdr-text-thumbnail.png" alt="" style="width: 25px; height: 25px; margin-right: 8px;padding-top: 8px;">
+           <span data-ko-wrap="false" data-ko-editable="leftButtonLink.text">Contact us<br>+91 1234567890</span></a></td>
+        </tr></tbody></table></td>
+      </tr></tbody></table><!--
+        --></div> </div></td>
+      </tr></tbody></table></div><!--
+       
+      </td></tr>                  </tbody></table>
+
+     
+
+
+    
+
+  <table role="presentation" class="vb-outer" width="70%" cellpadding="0" border="0" cellspacing="0" bgcolor="#7c060c;" id="ko_sideImageBlock_1" style="background-color: #7c060c;" data-ko-block="sideImageBlock">
+    <tbody>
+      <tr>
+        <td align="center" valign="top" style="display: flex; font-size: 0; align-items: center; justify-content: center; gap: 10px;"> 
+          <!-- Image on the left -->
+          <div>
+            <table  class="vb-outer-img"border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background-color: #7c060c;">
+              <tr>
+                <td align="left" valign="top" style="background-color: transparent; background: linear-gradient(to bottom, #7c060c, #7c060c);">
+                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 80px;">
+                    <tr>
+                      <td align="left" valign="top" style="padding-top: 10px;">
+                        <a data-ko-link="image.url" href="" target="_blank">
+                          <img src="https://static.vecteezy.com/system/resources/thumbnails/000/421/871/small/Multimedia__281_29.jpg" alt="" height="50" width="50" style="border-radius:50%;padding-right: 10px; padding-top: 10px;padding-left:10px;padding-bottom:10px;-ko-attr-alt: @[image.alt]; border:0; font:bold 24px/100% Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Content on the right -->
+          <!-- <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="60%" style="padding: 0; margin-right: 100px;">
+            <tbody>
+              <tr>
+                <td data-ko-editable="firstBodyText" align="left" style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: #ffffff; padding-bottom: 0px; padding-top: 10px;">
+                  <h4 style="margin: 0;">Want to talk business with us?</h4>
+                </td>
+              </tr>
+              <tr>
+                <td data-ko-editable="secondBodyText" align="left" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #faf8f8; padding: 0 0 5px 0;">
+                  <p style="margin: 0;">Feel free to reach out to us <strong>at partner@sweetshop.sweet</strong><br>We open opportunities for all forms of business collaboration.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="70%" style="padding: 0; ">
+            <tbody>
+              <tr>
+                <td data-ko-editable="firstBodyText" align="left" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #ffffff; padding-bottom: 10px;padding-top:10px;width:100%;line-height: 20px;">
+                  <div style="max-width: 300px; word-wrap: break-word;">
+                  <p style="margin: 0;">Want to talk business with us?</p>
+                   
+                  <p style="margin: 0;font-size: 10px; ">Feel free to reach out to us <strong>at partner@sweetshop.sweet</strong><br>We open opportunities for all forms of business collaboration.</p>
+                  </div>
+                </td>
+                
+             </tr>
+           </tbody>
+         </table>
+         </td>
+      </tr>
+    </tbody>
+     </table> 
+     
+     
+    
+  <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background-color:#202020;" data-ko-block="headerBlock1">
+    <!-- // 1-COLUMN SCAFFOLD -->
+    <tr>
+      <td align="center" height="100%" valign="top" width="100%" style="background-color:#ffffff; background:linear-gradient(to bottom, #ffffff, #ffffff);">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:80px;">
+            <tr>
+                <td align="center" valign="top" style="padding:20px 10px 10px; -ko-padding:@[_root_.gutterWidth]px @[Math.floor(_root_.gutterWidth / 2)]px @[Math.floor(_root_.gutterWidth / 2)]px">
+                    <a  href="http://www.nps.gov/" target="_blank"><img   src="https://media.istockphoto.com/id/157482029/photo/stack-of-books.jpg?s=612x612&w=0&k=20&c=ZxSsWKNcVpEzrJ3_kxAUuhBCT3P_dfnmJ81JegPD8eE=" alt="" height="80" width="200" style="-ko-attr-alt: @[image.alt]; border:0; color:#404040; font:bold 24px/100% Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif; -ko-font:bold 24px/100% @_root_.sansFace; margin:0; padding:0;"></a>
+                </td>
+            </tr>
+        </table>
+    </td>
+    </tr>
+
+</table>
+
+
+
+
+
+ <!-- socialblock -->
+
+ <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf" id="ko_bigSocialBlock_1" style="background-color: #ffffff" data-ko-block="bigSocialBlock">
+    <tbody>
+     <tr>
+       <td class="vb-outer" align="center" valign="top" style="padding-left: 9px; padding-right: 9px; font-size: 0">
+         <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
+         <div style="margin: 0 auto; max-width: 570px; -mru-width: 0px">
+           <table role="presentation" class="vb-row" border="0" cellpadding="0" cellspacing="9" bgcolor="#ffffff" width="570" style="border-collapse: collapse; width: 100%; background-color: #ffffff; max-width: 570px; -mru-width: 0px">
+             <tbody>
+               <tr>
+                 <td align="center" valign="top" style="font-size: 0; padding: 0 9px; padding-top: 13px; padding-bottom: 13px">
+                   <div style="vertical-align: top; width: 100%; max-width: 552px; -mru-width: 0px">
+                     <table role="presentation" border="0" cellspacing="9" cellpadding="0" style="border-collapse: collapse; width: 100%" width="552">
+                       <tbody>
+                         <tr>
+                           <td width="100%" valign="top" align="center" class="links-color socialLinks mobile-textcenter" style="font-size: 6px; font-weight: normal; text-align: center; padding: 9px; padding-top: 5px; padding-bottom: 5px;">
+                            &nbsp;<a style="display: inline-block; border-radius: 50px;" target="_blank" href="https://www.facebook.com/yourpage"><img border="0" src="https://cdn-icons-png.flaticon.com/256/2504/2504839.png" width="48" height="48" alt="Facebook" style="border: 0px; display: inline-block; vertical-align: top; padding-bottom: 0px;"></a>
+                            &nbsp;<a style="display: inline-block; border-radius: 50px;" target="_blank" href="https://www.twitter.com/yourprofile"><img border="0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBzH8UEnwhZ3xdq-cC4D9_dK4nu_Cjk9p-Q&s" width="48" height="48" alt="X / Twitter" style="border: 0px; display: inline-block; vertical-align: top; padding-bottom: 0px;"></a>
+                            &nbsp;<a style="display: inline-block; border-radius: 50px;" target="_blank" href="https://www.linkedin.com/in/yourprofile"><img border="0" src="https://thumbs.dreamstime.com/b/linkedin-icon-logo-beautiful-meticulously-designed-223937618.jpg" width="48" height="48" alt="LinkedIn" style="border: 0px; display: inline-block; vertical-align: top; padding-bottom: 0px;"></a>
+                            &nbsp;<a style="display: inline-block; border-radius: 50px;" target="_blank" href="https://www.instagram.com/yourprofile"><img border="0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxjIL03VE0L9Fs4oCWJg-E9A9vXm05R307qdW8gjAMdu09Uxr8FD2AYT6BWmpp30aee_8&usqp=CAU" width="48" height="48" alt="Instagram" style="border: 0px; display: inline-block; vertical-align: top; padding-bottom: 0px;"></a>
+                            &nbsp;<a style="display: inline-block; border-radius: 50px;" target="_blank" href="https://www.youtube.com/yourchannel"><img border="0" src="https://img.icons8.com/ios7/200/228BE6/facebook-messenger.png" width="48" height="48" alt="YouTube" style="border: 0px; display: inline-block; vertical-align: top; padding-bottom: 0px;"></a>
+                          </td>
+                         </tr>
+                       </tbody>
+                     </table>
+                   </div>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+         <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+       </td>
+     </tr>
+    </tbody>
+    </table>
+
+    
+ 
+     <!--  End of  socialblock -->
+
+     <!-- Fotter block-->
+ 
+
+     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background-color:#ffffff;" data-ko-block="footerBlock">
+        <tr>
+            <td align="center" height="100%" valign="top" width="100%" style="background-color:#ffffff; padding-top: 0;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0;">
+                    <tr>
+                        <td align="center" valign="top" style="padding: 20px 20px 30px;">
+                            <div data-ko-editable="footerText" data-ko-wrap="false">
+                                <p style="color:#000000; font:12px/16px Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0 0 2px 0; padding: 0; text-align: center;letter-spacing: 0.5px;">
+                                    Sweet Snack HQ, 123 Bique Street Unit 10
+                                </p>
+                                <p style="color:#000000; font:14px/18px Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0 0 20px 0; padding: 0; text-align: center;letter-spacing: 0.5px;">
+                                    Boston, MA 02110
+                                </p>
+                            </div>
+                            <div data-ko-editable="unsubscribeText" data-ko-wrap="false">
+                                <p style="color:#AAAAAA; font:14px/18px Frutiger, 'Frutiger Linotype', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0 0 10px 0; padding: 0; text-align: center;">
+                                    <a href="|UNSUB|" target="_blank" style="color:#b90d2a;">unsubscribe</a>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+       </table>
+       
+  
+        
+            
+  </div>
+</body>
+</html>
+
+
+
+
+ 
